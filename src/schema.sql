@@ -6,7 +6,7 @@ CREATE TABLE reviews (
   id INT NOT NULL AUTO_INCREMENT,
   product_id INT NOT NULL,
   rating INT NOT NULL,
-  `date` DATE NOT NULL,
+  `date` INT NOT NULL,
   summary VARCHAR(60) NOT NULL,
   body VARCHAR(100) NOT NULL,
   recommend BOOLEAN NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE characteristics (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE characteristics_reviews (
+CREATE TABLE characteristic_reviews (
   id INT NOT NULL AUTO_INCREMENT,
   characteristic_id INT NOT NULL,
   review_id INT NOT NULL,
@@ -40,26 +40,26 @@ CREATE TABLE characteristics_reviews (
   PRIMARY KEY (id)
 );
 
-LOAD DATA INFILE '../../reviews.csv'
+LOAD DATA LOCAL INFILE './reviews.csv'
 INTO TABLE reviews
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE '../../reviews_photos.csv'
+LOAD DATA LOCAL INFILE './reviews_photos.csv'
 INTO TABLE reviews_photos
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE '../../characteristics.csv'
+LOAD DATA LOCAL INFILE './characteristics.csv'
 INTO TABLE characteristics
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE '../../characteristics_reviews.csv'
-INTO TABLE characteristics_reviews
+LOAD DATA LOCAL INFILE './characteristic_reviews.csv'
+INTO TABLE characteristic_reviews
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
