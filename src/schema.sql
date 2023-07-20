@@ -1,4 +1,4 @@
-CREATE DATABASE ratingsandreviews;
+/*CREATE DATABASE ratingsandreviews;*/
 
 USE ratingsandreviews;
 
@@ -9,8 +9,8 @@ CREATE TABLE reviews (
   `date` INT NOT NULL,
   summary VARCHAR(60) NOT NULL,
   body VARCHAR(100) NOT NULL,
-  recommend BOOLEAN NOT NULL,
-  reported BOOLEAN NOT NULL,
+  recommend VARCHAR(5) NOT NULL,
+  reported VARCHAR(5) NOT NULL,
   reviewer_name VARCHAR(60) NOT NULL,
   reviewer_email VARCHAR(60) NOT NULL,
   response VARCHAR(200) DEFAULT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE reviews_photos (
 CREATE TABLE characteristics (
   id INT NOT NULL AUTO_INCREMENT,
   product_id INT NOT NULL,
-  `name` VARCHAR(7) NOT NULL,
+  `name` VARCHAR(10) NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -40,26 +40,30 @@ CREATE TABLE characteristic_reviews (
   PRIMARY KEY (id)
 );
 
-LOAD DATA LOCAL INFILE './reviews.csv'
+LOAD DATA LOCAL INFILE '/Users/jackpape/Desktop/reviews.csv'
 INTO TABLE reviews
 FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE './reviews_photos.csv'
+LOAD DATA LOCAL INFILE '/Users/jackpape/Desktop/reviews_photos.csv'
 INTO TABLE reviews_photos
 FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE './characteristics.csv'
+LOAD DATA LOCAL INFILE '/Users/jackpape/Desktop/characteristics.csv'
 INTO TABLE characteristics
 FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE './characteristic_reviews.csv'
+LOAD DATA LOCAL INFILE '/Users/jackpape/Desktop/characteristic_reviews.csv'
 INTO TABLE characteristic_reviews
 FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;

@@ -13,6 +13,7 @@ app.use(express.json());
 
 app.post('/reviews', controller.postReview);
 app.get('/reviews', controller.getReviews);
+app.get('/reviews/meta', controller.getReviewMeta);
 
 app.listen(process.env.PORT);
 console.log(`Listening at http://localhost:${process.env.PORT}`);
